@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+  <brwoser>CHROME</brwoser>
+   <url>https://www.buyme.co.il</url>
+   <buymeFirstName>דני</buymeFirstName>
+   <buymeEmail>danidina@gmail.com</buymeEmail>
+   <buymePass>Dani@1955</buymePass>
+   <buymePassV>Dani@1955</buymePassV>
+  <buymeSum>300</buymeSum>
+  <reciveName>משה</reciveName>
+  <bless>מזל טוב</bless>
+  <img>src/data/image.jpg</img>
+  <report>src/data/report/testReports.html</report>
+  <imagePath>src/data/report/images/</imagePath>;
+  <smsReciveNumber>0501234567</smsReciveNumber>
+  <smsSenderNumber>0523456789</smsSenderNumber>
+  <expectedColor>#ffa126</expectedColor>
+</config>
