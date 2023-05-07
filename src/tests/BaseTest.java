@@ -95,7 +95,7 @@ public class BaseTest {
      static String videoName;
     static String videoName2="myVideo";     ;
     private static String parent;
-    private static String tempName="\\" + System.currentTimeMillis()+".mp4";
+    private static String tempName="\\"+"Vid" + System.currentTimeMillis()+".webm";
 
     static Desktop desktop = Desktop.getDesktop();
 
