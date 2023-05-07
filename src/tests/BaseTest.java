@@ -14,6 +14,7 @@ import org.monte.screenrecorder.ScreenRecorder;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -21,10 +22,12 @@ import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 import pageObject.*;
 
+import javax.imageio.ImageIO;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -334,7 +337,33 @@ public class BaseTest {
         return ImagePath+".png";
     }
 
+    public void captureElement(WebElement ele,String size) throws IOException {
 
+        // Get entire page screenshot
+        File screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        BufferedImage fullImg = ImageIO.read(screenshot);
+
+// Get the location of element on the page
+        org.openqa.selenium.Point point = ele.getLocation();
+
+// Get width and height of the element
+        int eleWidth = ele.getSize().getWidth();
+        int eleHeight = ele.getSize().getHeight();
+
+// Crop the entire page screenshot to get only element screenshot
+        BufferedImage eleScreenshot= fullImg.getSubimage(point.getX(), point.getY(),
+                eleWidth, eleHeight);
+        ImageIO.write(eleScreenshot, "png", screenshot);
+
+
+     String image=imagePath + "\\" + System.currentTimeMillis()+".png";
+// Copy the element screenshot to disk
+
+        File screenshotLocation = new File(image);
+        FileUtils.copyFile(screenshot, screenshotLocation);
+        myTests.log(LogStatus.INFO, "screen:" + myTests.addScreenCapture(String.valueOf(screenshotLocation)));
+        myTests.log(LogStatus.PASS, "Log from threadId: size of Preloader " + size);
+    }
 
     public static void resetBrowser(String browseReset) {
         if (browseReset.equals("chrome")) {

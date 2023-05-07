@@ -1,10 +1,7 @@
 package flow;
 
 import data.Data;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import pageObject.BasePage;
 import pageObject.ExtraPage;
 import pageObject.HomePage;
@@ -94,11 +91,11 @@ public class ExtraFlow {
         driver.switchTo().window(parent3);
         WebElement industries = driver.findElement(By.cssSelector("div#prerendered"));
         List<WebElement> links = industries.findElements(tagName("div"));
-
-
         size = String.valueOf(links.get(2).getSize());
+        BaseTest.captureElement(links.get(2),size);
 
-        BaseTest.reportDimension(size);
+
+       // BaseTest.reportDimension(size);
 
         driver2.close();
         driver2.quit();
