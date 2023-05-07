@@ -27,6 +27,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.util.HashMap;
 import java.util.Map;
@@ -383,12 +384,36 @@ public class BaseTest {
 
     public static void convertVideo(String val) throws IOException, InterruptedException {
 
-        fileCodec=new File(new File(fileCodecPath).getAbsolutePath());
-        fileCodecPath=String.valueOf(fileCodec);
+        Process proc = Runtime.getRuntime().exec("cmd.exe /c start " +fileCodecPath+"\\"+"ffmpeg -i " +val+ " "+videotFile.getAbsolutePath()+tempName);
+        InputStream in = proc.getInputStream();
+        byte buff[] = new byte[1024];
+        int cbRead;
 
-        Runtime.getRuntime().exec("cmd.exe /c start " +fileCodecPath+"\\"+"ffmpeg -i " +val+ " "+videotFile.getAbsolutePath()+tempName);
+        try {
+            while ((cbRead = in.read(buff)) != -1) {
+                // Use the output of the process...
+            }
+        } catch (IOException e) {
+            // Insert code to handle exceptions that occur
+            // when reading the process output
+        }
 
-    Thread.sleep(30000);
+// No more output was available from the process, so...
+
+// Ensure that the process completes
+        try {
+            proc.waitFor();
+        } catch (InterruptedException e) {
+            // Handle exception that could occur when waiting
+            // for a spawned process to terminate
+        }
+
+// Then examine the process exit code
+        if (proc.exitValue() == 1) {
+            // Use the exit value...
+        }
+
+
     }
 
     public static void deleteAviFile(String videoToDelete) throws IOException {
