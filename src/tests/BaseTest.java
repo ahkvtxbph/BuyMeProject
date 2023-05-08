@@ -457,9 +457,10 @@ public class BaseTest {
     }
 
     public static void renameVideoName()
-    {
+    {   String temp="Vid" + System.currentTimeMillis()+".avi";
         File sourceFile = new File(videoName);
-        File destFile = new File(videotFile.getAbsolutePath()+"\\"+"1.avi");
+        File destFile = new File(videotFile.getAbsolutePath()+"\\"+temp);//"1.avi");
+        videoName=videotFile.getAbsolutePath()+"\\"+temp;
         if (sourceFile.renameTo(destFile)) {
             System.out.println("File renamed successfully");
         } else {
@@ -470,8 +471,8 @@ public class BaseTest {
     public static void end() throws InterruptedException, IOException {
         String folder="";
 
-       renameVideoName();
-        videoName=videotFile.getAbsolutePath()+"\\"+"1.avi";
+      renameVideoName();
+
         String videoToDelete=videoName;
         convertVideo(videoName);
         deleteAviFile(videoToDelete);

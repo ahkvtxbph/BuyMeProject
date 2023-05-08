@@ -63,6 +63,8 @@ public InvitePage recipientText(String val)throws InterruptedException
     {
         WebElement chooseFile = driver.findElement(image);
         chooseFile.sendKeys(val);
+
+
        return this;
     }
 
