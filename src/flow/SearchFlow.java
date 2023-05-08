@@ -11,6 +11,7 @@ public class SearchFlow {
     BaseTest BaseTest;
     HomePageFlow HomePageFlow;
     SignUpFlow signUpFlow;
+    LoginFlow LoginFlow;
 
 
     public SearchFlow(WebDriver driver) {
@@ -19,6 +20,7 @@ public class SearchFlow {
         BasePage=new BasePage(driver);
         HomePageFlow=new HomePageFlow(driver);
         BaseTest=new BaseTest(driver);
+        LoginFlow=new LoginFlow(driver);
        }
 
 
@@ -43,7 +45,8 @@ public class SearchFlow {
     }
 
     public void preiousStep() throws Exception {
-        HomePageFlow.goToRegisterPage();
-        signUpFlow.signUp();
+        /*  HomePageFlow.goToRegisterPage();
+        SignUpFlow.signUp();*/
+        LoginFlow.login();
       }
 }

@@ -15,7 +15,7 @@ public class ProductFlow {
     SignUpFlow SignUpFlow;
     SearchFlow SearchFlow;
     SearchProductPage SearchProductPage;
-
+    LoginFlow LoginFlow;
 
 
     public  ProductFlow(WebDriver driver)
@@ -35,8 +35,9 @@ public class ProductFlow {
         BasePage.setPageTitle();
     }
     public void preiousStep() throws Exception {
-        HomePageFlow.goToRegisterPage();
-        SignUpFlow.signUp();
+        /*  HomePageFlow.goToRegisterPage();
+        SignUpFlow.signUp();*/
+        LoginFlow.login();
         SearchFlow.searchGift();
     }
 }

@@ -20,6 +20,7 @@ public class InviteFlow {
   SignUpFlow SignUpFlow;
   SearchFlow SearchFlow;
     ProductFlow ProductFlow;
+    LoginFlow LoginFlow;
 
 
     public InviteFlow(WebDriver driver) {
@@ -28,7 +29,7 @@ public class InviteFlow {
         SignUpFlow=new SignUpFlow(driver);
         SearchFlow=new SearchFlow(driver);;
         ProductFlow=new ProductFlow(driver);
-
+        LoginFlow=new LoginFlow(driver);
 
         InvitePage = new InvitePage(driver);
         BasePage=new BasePage(driver);
@@ -66,8 +67,9 @@ public class InviteFlow {
 
     public void preiousStep() throws Exception {
 
-        HomePageFlow.goToRegisterPage();
-        SignUpFlow.signUp();
+        /*  HomePageFlow.goToRegisterPage();
+        SignUpFlow.signUp();*/
+        LoginFlow.login();
         SearchFlow.searchGift();
         ProductFlow.ProductFlow();
 

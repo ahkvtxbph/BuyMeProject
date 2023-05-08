@@ -22,6 +22,7 @@ public class ExtraFlow {
      ExtraPage ExtraPage;
      BasePage BasePage;
      HomePage HomePage;
+     LoginFlow LoginFlow;
      Data Data;
     BaseTest BaseTest;
 
@@ -35,7 +36,8 @@ public class ExtraFlow {
         SearchFlow=new SearchFlow(driver);;
         ProductFlow=new ProductFlow(driver);
         InviteFlow=new InviteFlow(driver);
-
+        InviteFlow=new InviteFlow(driver);
+        LoginFlow=new LoginFlow(driver);
         ExtraPage=new ExtraPage(driver);
         BasePage=new BasePage(driver);
         BaseTest=new BaseTest(driver);
@@ -104,8 +106,9 @@ public class ExtraFlow {
     }
 
     public void preiousStep() throws Exception {
-        HomePageFlow.goToRegisterPage();
-        SignUpFlow.signUp();
+      /*  HomePageFlow.goToRegisterPage();
+        SignUpFlow.signUp();*/
+        LoginFlow.login();
         SearchFlow.searchGift();
         ProductFlow.ProductFlow();
         InviteFlow.invite();
